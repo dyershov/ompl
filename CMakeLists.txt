@@ -145,6 +145,16 @@ if (SPOT_FOUND)
     link_directories(${SPOT_LIBRARY_DIRS})
 endif()
 
+set_package_properties(CGAL PROPERTIES
+    URL "https://github.com/CGAL/cgal"
+    PURPOSE "Used for constructing nD triangulations.")
+find_package(CGAL)
+if (CGAL_FOUND)
+    set(OMPL_HAVE_CGAL 1)
+    include_directories("${CGAL_INCLUDE_DIRS}")
+    link_directories(${CGAL_LIBRARY_DIRS})
+endif()
+
 set_package_properties(Doxygen PROPERTIES
     URL "http://doxygen.org"
     PURPOSE "Used to create the OMPL documentation (i.e., https://ompl.kavrakilab.org).")
